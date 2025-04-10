@@ -1,0 +1,7 @@
+{
+  "name": "NBARookieReactApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
