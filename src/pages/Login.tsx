@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import './Login.css';
 import { useState } from 'react';
 import { auth } from "../firebaseConfig"
@@ -9,13 +9,15 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const router = useIonRouter();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login exitoso:', userCredential.user);
       setError('');
+      router.push('/favorites', 'forward', 'replace');
     } catch (err: any) {
       console.error('Error en el login', err);
       setError('Credenciales inválidas. Verifica tu email y contraseña.');
@@ -24,7 +26,7 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader translucent={true}>
         <IonToolbar>
           <IonTitle>Login</IonTitle>
         </IonToolbar>
