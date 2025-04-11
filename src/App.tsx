@@ -35,6 +35,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import { addIcons } from 'ionicons';
+import ProtectedRoute from './components/ProtectedRoute';
 
 setupIonicReact();
 addIcons({ logOutOutline })
@@ -46,9 +47,7 @@ const App: React.FC = () => (
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/favorites">
-          <Favorites />
-        </Route>
+        <ProtectedRoute exact path="/favorites" component={Favorites} />
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>
