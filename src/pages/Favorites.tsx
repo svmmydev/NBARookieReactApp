@@ -2,9 +2,16 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, 
 import './Favorites.css';
 import { useFavorites } from '../hooks/useFavorites';
 import { logOutOutline } from 'ionicons/icons';
+import { useAuth } from '../hooks/useAuth';
+import { useEffect } from 'react';
 
 const Favorites: React.FC = () => {
   const { players, loading } = useFavorites();
+  const { logout } = useAuth();
+
+  useEffect(() => {
+    
+  })
 
   return (
     <IonPage>
@@ -12,12 +19,13 @@ const Favorites: React.FC = () => {
         <IonToolbar>
           <IonTitle>Login</IonTitle>
           <IonButtons slot="end">
-            <IonButton >
+            <IonButton onClick={logout}>
               <IonIcon icon={logOutOutline} slot="icon-only"></IonIcon>
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen>
         {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50%' }}>
