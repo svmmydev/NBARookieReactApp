@@ -29,7 +29,7 @@ const Login: React.FC = () => {
           <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen>
         <form className='ion-padding' onSubmit={handleSubmit}>
           <IonItem>
             <IonInput
@@ -58,11 +58,6 @@ const Login: React.FC = () => {
           </IonButton>
           
           {error && <p className=''>{error}</p>}
-
-          <p className='ion-text-center ion-padding'>
-            ¿No tienes cuenta?
-            <a href='/registro'>Regístrate</a>
-          </p>
         </form>
       </IonContent>
     </IonPage>
@@ -70,4 +65,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-
