@@ -3,21 +3,16 @@ import './Favorites.css';
 import { useFavorites } from '../hooks/useFavorites';
 import { logOutOutline } from 'ionicons/icons';
 import { useAuth } from '../hooks/useAuth';
-import { useEffect } from 'react';
 
 const Favorites: React.FC = () => {
   const { players, loading } = useFavorites();
   const { logout } = useAuth();
 
-  useEffect(() => {
-    
-  })
-
   return (
     <IonPage>
       <IonHeader translucent={true}>
         <IonToolbar>
-          <IonTitle>Login</IonTitle>
+          <IonTitle>Inicio de sesión</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={logout}>
               <IonIcon icon={logOutOutline} slot="icon-only"></IonIcon>
