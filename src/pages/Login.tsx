@@ -42,9 +42,9 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-        <IonContent fullscreen class="nba-gradient" scrollY={false}>
+        <IonContent fullscreen={true} class="nba-gradient" scrollY={false}>
           <div className='login-wrapper'>
-            <IonImg src="../public/images/nba-logo.png" alt="NBA Logo"></IonImg>
+            <IonImg src="images/nba-logo.png" alt="NBA Logo"></IonImg>
             <form className='ion-padding login' onSubmit={handleSubmit} autoComplete='off'>
               <IonItem lines="none">
                 <IonInput
@@ -80,7 +80,7 @@ const Login: React.FC = () => {
         </IonContent>
 
         <IonFooter translucent={true}>
-          <IonToolbar>
+          <IonToolbar className='footer-toolbar'>
             <IonTitle className='footer'>© NBA API - Sammy</IonTitle>
           </IonToolbar>
         </IonFooter>

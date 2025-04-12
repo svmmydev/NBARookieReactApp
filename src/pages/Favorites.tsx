@@ -23,7 +23,7 @@ const Favorites: React.FC = () => {
   return (
     <IonPage>
       <IonHeader translucent={true}>
-        <IonToolbar className='header'>
+        <IonToolbar className='header-toolbar'>
           <IonTitle className='header-tittle'>Favoritos</IonTitle>
           <IonButtons slot="end">
             <IonButton fill='clear' onClick={logout} className="logout-button">
@@ -33,7 +33,7 @@ const Favorites: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className='nba-gradient'>
+      <IonContent fullscreen={true} className='nba-gradient'>
         {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50%' }}>
               <IonSpinner name="crescent" />

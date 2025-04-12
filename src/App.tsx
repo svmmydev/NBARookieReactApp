@@ -36,24 +36,56 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import { addIcons } from 'ionicons';
 import ProtectedRoute from './components/ProtectedRoute';
+import { useEffect } from 'react';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 setupIonicReact();
 addIcons({ logOutOutline })
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <ProtectedRoute exact path="/favorites" component={Favorites} />
-        <Route exact path="/">
-          <Redirect to="/login" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+
+  /**
+   * useEffect – Runs once when the App component is mounted.
+   * Initializes the native StatusBar behavior using Capacitor.
+   *
+   * - Disables the overlay (prevents content from going under the system status bar)
+   * - Sets the status bar style to dark (dark text/icons, good for light backgrounds)
+   *
+   * This ensures that the header (IonHeader/IonToolbar) is not overlapped by the Android system bar.
+   */
+  useEffect(() => {
+    const initStatusBar = async () => {
+      try {
+        // Prevent the WebView content from rendering under the native status bar
+        await StatusBar.setOverlaysWebView({ overlay: false });
+
+        // Set the status bar content to dark (works best with light backgrounds)
+        await StatusBar.setStyle({ style: Style.Dark });
+      } catch (err) {
+        console.warn('StatusBar overlay not supported:', err);
+      }
+    };
+  
+    initStatusBar();
+  }, []);
+
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <ProtectedRoute exact path="/favorites" component={Favorites} />
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
+
 
 export default App;

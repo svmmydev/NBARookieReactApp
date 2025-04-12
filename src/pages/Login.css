@@ -50,16 +50,12 @@ ion-img {
     font-weight: bold;
 }
 
-.md ion-toolbar {
-    --background: #0000007c;
-    height: 50px;
-}
-
-ion-toolbar {
-    --background: #181818;
-    --color: white;
+.footer-toolbar {
+    --background: #0000008c;
     --border-color: white;
+    --color: white;
     --border-width: 2px 0 0;
+    height: 50px;
 }
 
 .footer {
