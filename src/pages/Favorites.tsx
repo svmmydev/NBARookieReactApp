@@ -16,24 +16,24 @@ const Favorites: React.FC = () => {
   return (
     <IonPage>
       <IonHeader translucent={true}>
-        <IonToolbar>
-          <IonTitle>Inicio de sesión</IonTitle>
+        <IonToolbar className='header'>
+          <IonTitle className='header-tittle'>Favoritos</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={logout}>
-              <IonIcon icon={logOutOutline} slot="icon-only"></IonIcon>
+            <IonButton fill='clear' onClick={logout} className="logout-button">
+              <IonIcon icon={logOutOutline} slot="icon-only" color='danger'></IonIcon>
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen>
+      <IonContent fullscreen className='nba-gradient'>
         {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50%' }}>
               <IonSpinner name="crescent" />
             </div>
         ) : (
           <>
-          <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresher slot="fixed" mode="md" onIonRefresh={handleRefresh}>
             <IonRefresherContent></IonRefresherContent>
           </IonRefresher>
           <div>
@@ -69,12 +69,6 @@ const Favorites: React.FC = () => {
           </>
         )}
       </IonContent>
-
-      <IonFooter translucent={true}>
-        <IonToolbar>
-          <IonTitle >© NBA API - Sammy</IonTitle>
-        </IonToolbar>
-      </IonFooter>
     </IonPage>
   );
 };
