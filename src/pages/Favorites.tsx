@@ -5,13 +5,20 @@ import { logOutOutline } from 'ionicons/icons';
 import { useAuth } from '../hooks/useAuth';
 
 const Favorites: React.FC = () => {
-  const { players, loading, refreshFavorites } = useFavorites();
-  const { logout } = useAuth();
+  const { players, loading, refreshFavorites } = useFavorites();  // Hook to load and refresh favorite players
+  const { logout } = useAuth(); // Hook to handle logout logic
 
+
+  /**
+  * handleRefresh
+  * Called when the user pulls to refresh the list.
+  * It fetches fresh data using `refreshFavorites` and completes the refresher event.
+  */
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await refreshFavorites();
     event.detail.complete();
   };
+
 
   return (
     <IonPage>
@@ -72,5 +79,6 @@ const Favorites: React.FC = () => {
     </IonPage>
   );
 };
+
 
 export default Favorites;

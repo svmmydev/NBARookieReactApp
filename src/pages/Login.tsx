@@ -5,27 +5,40 @@ import { auth } from "../firebaseConfig"
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  // State for form fields and error handling
+  const [email, setEmail] = useState('');       // Stores the email input
+  const [password, setPassword] = useState(''); // Stores the password input
+  const [error, setError] = useState('');       // Stores login error messages
 
-  const router = useIonRouter();
 
+  const router = useIonRouter(); // Ionic hook for navigation between pages
+
+
+  /**
+  * handleSubmit
+  * Triggered when the login form is submitted.
+  * It calls Firebase Auth with the email and password.
+  * If the login is successful, it redirects the user to /favorites.
+  * If it fails, an error message is displayed.
+  */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form reload
 
     try {
+      // Attempt to sign in the user
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setError('');
+      setError(''); // Clear previous error messages if any
       
+      // Redirect to /favorites only if login was successful
       if (userCredential.user) {
-        router.push('/favorites', 'forward', 'replace');
+        router.push('/favorites', 'forward', 'replace');  // Navigation to /Favorites
       }
     } catch (err: any) {
       console.error('Error en el login', err);
       setError('Credenciales inválidas. Verifica tu email y contraseña.');
     }
   };
+
 
   return (
     <IonPage>
@@ -74,5 +87,6 @@ const Login: React.FC = () => {
     </IonPage>
   );
 };
+
 
 export default Login;

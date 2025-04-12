@@ -4,8 +4,14 @@ import { signOut } from "firebase/auth";
 
 
 export const useAuth = () => {
-    const router = useIonRouter();
+    const router = useIonRouter();  // Ionic navigation hook (used instead of useNavigate in Ionic React apps)
 
+
+    /**
+    * logout
+    * Signs out the current user from Firebase Auth
+    * Then navigates to the /login page using Ionic routing
+    */
     const logout = async () => {
         try {
             await signOut(auth);
@@ -15,5 +21,6 @@ export const useAuth = () => {
         }
     };
 
+    
     return { logout }
 };
