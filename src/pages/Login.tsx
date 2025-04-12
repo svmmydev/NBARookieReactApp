@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <form className='ion-padding' onSubmit={handleSubmit}>
+        <form className='ion-padding' onSubmit={handleSubmit} autoComplete='false'>
           <IonItem>
             <IonInput
               label='Email:'
