@@ -11,6 +11,9 @@
 # production
 /dist
 
+# firebase protected file
+src/firebaseConfig.tsx
+
 # misc
 .DS_Store
 .env.local
@@ -29,6 +32,3 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
-
-# sammy
-#/firebaseConfig.ts
